@@ -1,0 +1,7 @@
+django
+mysqlclient
+webpack-dev-server@latest
+djangorestframework-simplejwt
+react-router-dom axios
+django-cors-headers
+@fullcalendar/react @fullcalendar/daygrid @fullcalendar/timegrid @fullcalendar/interaction

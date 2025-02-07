@@ -1,0 +1,59 @@
+/* Register.css */
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #FFF3E0; /* เปลี่ยนพื้นหลังเป็นสี FFF3E0 */
+}
+
+.register-form {
+    background-color: #fff;
+    padding: 20px 30px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+}
+
+.register-title {
+    color: #3f51b5;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.form-column {
+    display: flex;
+    justify-content: space-between; /* เพิ่มให้ชื่อและนามสกุลอยู่ในบรรทัดเดียวกัน */
+    gap: 10px;
+}
+
+.form-column input {
+    width: 48%; /* ลดขนาดให้พอดีกับพื้นที่ */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.register-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+.register-button:hover {
+    background-color: #45a049;
+}

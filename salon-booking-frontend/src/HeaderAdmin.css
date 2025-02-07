@@ -1,0 +1,66 @@
+/* การจัดสไตล์ให้กับ Header ของแอดมิน */
+.header-admin {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    font-family: Arial, sans-serif;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: rgb(0, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: #f44336; /* สีที่เปลี่ยนเมื่อ hover */
+}
+
+.profile-f {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.profile-f img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+.profile-f span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.logout-btn {
+    padding: 8px 16px;
+    background-color: #f44336;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-btn:hover {
+    background-color: #d32f2f;
+}

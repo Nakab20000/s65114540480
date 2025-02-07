@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio List</title>
+</head>
+<body>
+    <h1>Our Portfolio</h1>
+    <div>
+        {% for portfolio in portfolios %}
+            <div>
+                <h2>{{ portfolio.title }}</h2>
+                <p>{{ portfolio.description }}</p>
+                <div>
+                    <img src="{{ portfolio.image1.url }}" alt="{{ portfolio.title }} image 1">
+                    <img src="{{ portfolio.image2.url }}" alt="{{ portfolio.title }} image 2">
+                    <img src="{{ portfolio.image3.url }}" alt="{{ portfolio.title }} image 3">
+                    <img src="{{ portfolio.image4.url }}" alt="{{ portfolio.title }} image 4">
+                </div>
+            </div>
+        {% empty %}
+            <p>No portfolios available.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>

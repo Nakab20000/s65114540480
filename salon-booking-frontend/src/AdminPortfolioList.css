@@ -1,0 +1,67 @@
+.admin-portfolio-list {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.back-button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.back-button:hover {
+    background-color: #45a049;
+}
+
+.portfolio-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.portfolio-table th,
+.portfolio-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center; /* จัดกึ่งกลางข้อมูล */
+}
+
+.portfolio-table th {
+    background-color: #f4f4f4;
+    font-weight: bold;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+button.edit-button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.edit-button:hover {
+    background-color: #0056b3;
+}
+
+button.delete-button {
+    background-color: #DC3545;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button.delete-button:hover {
+    background-color: #a71d2a;
+}
