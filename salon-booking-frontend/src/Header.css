@@ -1,6 +1,6 @@
 .header {
     width: 100%; /* ขยายความกว้างเต็มหน้าจอ */
-    background-color: #f8f9fa; /* กำหนดสีพื้นหลัง */
+    background-color: #F5E3CB; /* กำหนดสีพื้นหลัง */
     display: flex;
     justify-content: space-between;
     align-items: center;

@@ -1,39 +1,53 @@
-// HairstyleDetails.js
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import './Home.css'; // ใช้ CSS เดียวกันสำหรับการตกแต่ง
+import React, { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import "./HairstyleDetail.css"; // ใช้ CSS เดียวกัน
 
 const HairstyleDetails = () => {
     const { id } = useParams();
     const navigate = useNavigate();
+    const [hairstyle, setHairstyle] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const hairstyles = [
-        { id: 1, name: 'Two Block', description: 'ทรงผมยอดฮิตเหมาะกับวัยรุ่น', image: '/images/two-block.jpg' },
-        { id: 2, name: 'Mullet', description: 'ทรงผมย้อนยุคที่กลับมาได้รับความนิยมอีกครั้ง', image: '/images/mullet.jpg' },
-        // เพิ่มทรงผมอื่นๆ ที่เหลือตามที่ต้องการ
-    ];
+    useEffect(() => {
+        const fetchHairstyleDetail = async () => {
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/api/hairstyles/${id}/`);
+                if (!response.ok) throw new Error("โหลดข้อมูลไม่สำเร็จ");
 
-    const hairstyle = hairstyles.find((style) => style.id === parseInt(id));
+                const data = await response.json();
+                setHairstyle(data);
+            } catch (err) {
+                setError(err.message);
+            } finally {
+                setLoading(false);
+            }
+        };
 
-    if (!hairstyle) {
-        return <div>ไม่พบทรงผมที่คุณเลือก</div>;
-    }
+        fetchHairstyleDetail();
+    }, [id]); // ✅ ใส่ id เป็น dependency
+
+    if (loading) return <p>⏳ กำลังโหลดข้อมูล...</p>;
+    if (error) return <p style={{ color: "red" }}>❌ {error}</p>;
+    if (!hairstyle) return <p>❌ ไม่พบทรงผมที่คุณเลือก</p>;
 
     return (
         <div className="hairstyle-details-container">
             <div className="details-content">
                 <img 
-                    src={hairstyle.image} 
+                    src={hairstyle.image || "/images/default-haircut.jpg"} 
                     alt={hairstyle.name} 
                     className="details-image"
                 />
                 <h2>{hairstyle.name}</h2>
                 <p>{hairstyle.description}</p>
+                <p><strong>ราคา:</strong> {hairstyle.price} บาท</p>
+
                 <button 
                     className="back-button"
                     onClick={() => navigate(-1)}
                 >
-                    กดกลับ
+                    🔙 กลับ
                 </button>
             </div>
         </div>

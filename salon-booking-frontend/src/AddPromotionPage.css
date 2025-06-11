@@ -1,0 +1,72 @@
+.promotion-form {
+    max-width: 500px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #fdf2e9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.promotion-form h2 {
+    text-align: center;
+    color: #3f3d56;
+    margin-bottom: 20px;
+}
+
+.promotion-form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.promotion-form input,
+.promotion-form select,
+.promotion-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.promotion-form textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.promotion-form button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 15px;
+    background-color: #28a745;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.promotion-form button:hover {
+    background-color: #218838;
+}
+
+.back-btn {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background-color: #dc3545;
+    color: white;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+    text-align: center;
+}
+
+.back-btn:hover {
+    background-color: #c82333;
+}

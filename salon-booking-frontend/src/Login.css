@@ -1,71 +1,127 @@
-/* Login.css */
+/* Login.css - Hair Salon Booking System */
 .login-container {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f5f5f5;
+    background-color: #f8f5f0; /* Light cream background */
+    background-image: linear-gradient(135deg, #f8f5f0 0%, #f0e9df 100%);
 }
 
 .login-form {
     background-color: #ffffff;
-    padding: 30px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0px 8px 30px rgba(0, 0, 0, 0.08);
     text-align: center;
-    width: 300px;
+    width: 350px;
+    border: 1px solid #e8e1d5;
 }
 
 .login-form h2 {
+    margin-bottom: 25px;
+    font-size: 28px;
+    color: #5a4a42; /* Rich brown text */
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+}
+
+.salon-logo {
     margin-bottom: 20px;
-    font-size: 24px;
-    color: #333;
+    width: 120px;
+    height: auto;
 }
 
 .form-group {
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    text-align: left;
+    margin-bottom: 8px;
+    color: #7a6a5d;
+    font-size: 14px;
 }
 
 .form-group input {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 14px;
+    padding: 12px;
+    border: 1px solid #e0d5c5;
+    border-radius: 8px;
+    font-size: 15px;
+    background-color: #fffcf7;
+    transition: border 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: #c9b299;
+    box-shadow: 0 0 0 2px rgba(201, 178, 153, 0.2);
 }
 
 .login-button {
     width: 100%;
-    background-color: #4caf50;
-    color: white;
-    padding: 10px;
+    background-color: #c9b299; /* Cream accent color */
+    color: #4a3f35;
+    padding: 14px;
     border: none;
-    border-radius: 20px;
+    border-radius: 30px;
     cursor: pointer;
     font-size: 16px;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .login-button:hover {
-    background-color: #45a049;
+    background-color: #baa48c;
+    transform: translateY(-2px);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
 }
 
 .login-links {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 20px;
 }
 
 .link-button {
     background: none;
     border: none;
-    color: #3f51b5;
-    text-decoration: underline;
+    color: #a48f75;
+    text-decoration: none;
     cursor: pointer;
     font-size: 14px;
+    transition: color 0.3s ease;
 }
 
 .link-button:hover {
-    text-decoration: none;
-    color: #303f9f;
+    color: #7a6a5d;
+    text-decoration: underline;
+}
+
+.form-divider {
+    margin: 25px 0;
+    text-align: center;
+    position: relative;
+}
+
+.form-divider::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background-color: #e8e1d5;
+}
+
+.form-divider span {
+    background-color: #ffffff;
+    padding: 0 15px;
+    position: relative;
+    color: #a48f75;
+    font-size: 14px;
 }

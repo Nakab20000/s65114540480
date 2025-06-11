@@ -1,46 +1,64 @@
-/* Header1.css */
-.header {
-    background-color: #FFF5E1; /* สีครีม */
-    padding: 10px 20px;
+/* Header ติดบนสุด */
+.header5 {
+    width: 100%; /* ขยายความกว้างเต็มหน้าจอ */
+    background-color: #F5E3CB; /* กำหนดสีพื้นหลัง */
     display: flex;
-    align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    position: relative;
-}
-
-.header-content {
-    display: flex;
     align-items: center;
-    justify-content: space-between;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    padding: 10px 20px; /* เพิ่มระยะห่างภายใน */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* เพิ่มเงา */
+    position: fixed; /* ทำให้ Header อยู่ด้านบนตลอดเวลา */
+    top: 0;
+    left: 0;
+    z-index: 10;
+    box-sizing: border-box; /* ควบคุม padding */
 }
 
-
-.nav-links {
+/* จัดเนื้อหาใน Header */
+.header-content5 {
     display: flex;
-    gap: 20px; /* ระยะห่างระหว่างลิงก์ */
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* ให้เนื้อหาใน header ขยายเต็ม */
 }
 
-.nav-links a {
-    color: black; /* ตั้งค่าตัวหนังสือเป็นสีดำ */
-    text-decoration: none;
+/* ลิงก์เมนูใน Header */
+.nav-links5 {
+    display: flex; /* จัดเรียงลิงก์แบบแนวนอน */
+    gap: 15px; /* เพิ่มช่องว่างระหว่างลิงก์ */
+}
+
+.nav-links5 a {
+    text-decoration: none; /* ลบขีดเส้นใต้ */
+    color: #333; /* สีข้อความ */
+    font-weight: bold;
     font-size: 16px;
+    padding: 5px 10px; /* เพิ่มพื้นที่คลิก */
+    transition: color 0.3s, background-color 0.3s; /* เพิ่มเอฟเฟกต์ hover */
 }
 
-.nav-links a:hover {
-    color: #3f51b5; /* สีเมื่อเอาเมาส์ไปชี้ */
+.nav-links5 a:hover {
+    color: white; /* เปลี่ยนสีตัวอักษร */
+    background-color: #007bff; /* เปลี่ยนพื้นหลังเมื่อ hover */
+    border-radius: 5px; /* มุมโค้ง */
 }
 
-.profile-f {
+/* โปรไฟล์ไอคอน */
+.profile5 {
     display: flex;
     align-items: center;
+    cursor: pointer; /* เปลี่ยนเคอร์เซอร์เมื่อ hover */
 }
 
-.icon {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+.icon5 {
+    width: 40px; /* ขนาดไอคอน */
+    height: 40px;
+    border-radius: 50%; /* ทำให้เป็นวงกลม */
+    border: 1px solid #ccc; /* ขอบสีเทา */
+    transition: transform 0.3s; /* เพิ่มเอฟเฟกต์เมื่อ hover */
+}
+
+.icon5:hover {
+    transform: scale(1.1); /* ขยายไอคอนเมื่อ hover */
+    border-color: #007bff; /* เปลี่ยนสีขอบ */
 }

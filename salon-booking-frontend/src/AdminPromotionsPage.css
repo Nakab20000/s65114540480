@@ -1,0 +1,58 @@
+.admin-promotions-page {
+    text-align: center;
+    padding: 20px;
+}
+
+.promotions-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.promotions-table th,
+.promotions-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.promotions-table th {
+    background-color: #f4f4f4;
+}
+
+.active {
+    color: green;
+    font-weight: bold;
+}
+
+.canceled {
+    color: red;
+    font-weight: bold;
+}
+
+.cancel-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cancel-btn:hover {
+    background-color: darkred;
+}
+
+.back-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}

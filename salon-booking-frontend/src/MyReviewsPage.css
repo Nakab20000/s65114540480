@@ -1,0 +1,71 @@
+/* MyReviewsPage.css */
+.my-reviews-page {
+    text-align: center;
+    padding: 20px;
+    background-color: #fdf2e9;
+    min-height: 100vh; /* ทำให้ container เต็มหน้าจอ */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h2 {
+    color: #3f3d56;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.reviews-container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 80%;
+    max-width: 600px;
+}
+
+.review-card {
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.review-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.review-date {
+    font-size: 14px;
+    color: #6c757d;
+    margin-bottom: 5px;
+}
+
+.review-rating {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ff9800;
+}
+
+.review-text {
+    font-size: 16px;
+    color: #333;
+}
+
+.back-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3f3d56;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.back-btn:hover {
+    background-color: #2c2a47;
+}

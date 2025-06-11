@@ -1,0 +1,58 @@
+.admin-hairstyles {
+    text-align: center;
+    padding: 5px;
+}
+
+.hairstyle-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.hairstyle-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.hairstyle-card1 {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 250px;
+    width: 100%;
+}
+
+/* กำหนดให้รูปภาพใน .hairstyle-card1 มีขนาดเท่ากัน */
+.hairstyle-card1 img {
+    width: 100%;         /* ขยายรูปภาพให้เต็ม card */
+    height: 180px;       /* กำหนดความสูงคงที่ */
+    object-fit: cover;   /* ป้องกันภาพแตก ย่อและครอปให้พอดี */
+    border-radius: 8px;  /* ทำให้ขอบมน */
+}
+
+.hairstyle-img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.hairstyle-name {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.hairstyle-price {
+    font-size: 1rem;
+    color: green;
+}

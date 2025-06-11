@@ -1,0 +1,39 @@
+.no-show-page {
+    padding: 20px;
+    text-align: center;
+}
+
+.no-show-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.no-show-table th, .no-show-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.no-show-table th {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.no-show-table td {
+    background-color: #f9f9f9;
+}
+
+.back-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background-color: #2980b9;
+}

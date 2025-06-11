@@ -5,6 +5,11 @@ from rest_framework import serializers
 from .models import Portfolio
 from .models import Booking
 from .models import Promotion
+from .models import *
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
+
 class RegisterSerializer(serializers.ModelSerializer):
     password_confirmation = serializers.CharField(write_only=True)
 
@@ -33,30 +38,49 @@ class RegisterSerializer(serializers.ModelSerializer):
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CustomUser
-        fields = ['username', 'email', 'phone_number', 'first_name', 'last_name']
+        model = User
+        fields = ["username", "email", "phone_number", "first_name", "last_name","profile_image"]
+        read_only_fields = ["username"]  # ✅ ห้ามแก้ไข username
+
 
 class PortfolioSerializer(serializers.ModelSerializer):
+    image1 = serializers.ImageField(required=False, allow_null=True)
+    image2 = serializers.ImageField(required=False, allow_null=True)
+    image3 = serializers.ImageField(required=False, allow_null=True)
+    image4 = serializers.ImageField(required=False, allow_null=True)
+    user = serializers.HiddenField(default=serializers.CurrentUserDefault())
+
     class Meta:
         model = Portfolio
-        fields = ['id','title', 'description', 'image1', 'image2', 'image3', 'image4']
+        fields = ['id', 'title', 'description', 'image1', 'image2', 'image3', 'image4', 'user']
 
-    # กำหนดให้รองรับการอัปโหลดไฟล์
-    image1 = serializers.ImageField(required=False)
-    image2 = serializers.ImageField(required=False)
-    image3 = serializers.ImageField(required=False)
-    image4 = serializers.ImageField(required=False)
+    def create(self, validated_data):
+        # ข้อมูลที่ได้จาก request.data จะถูกจัดเก็บใน validated_data
+        portfolio = Portfolio.objects.create(**validated_data)
+        return portfolio
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = get_user_model()
+        fields = ['id', 'username', 'first_name', 'last_name']  # สามารถเลือกฟิลด์ที่ต้องการได้
+
 
 class BookingSerializer(serializers.ModelSerializer):
-    username = serializers.CharField(source="user.username", read_only=True)  # เพิ่ม username ของผู้ใช้
-    
+    username = serializers.CharField(source="user.username", read_only=True)
+
     class Meta:
         model = Booking
         fields = [
             'id', 'user', 'username', 'booking_date', 'booking_time',
-            'hair_style', 'hair_type', 'status', 'promotion'
+            'hair_style', 'hair_type', 'status', 'promotion', 'price', 'cancel_reason'
         ]
-        read_only_fields = ['id', 'user', 'username', 'status']  # กำหนดฟิลด์ที่ไม่สามารถแก้ไขได้
+        read_only_fields = ['id', 'user', 'username', 'status', 'cancel_reason']
+
+    def to_representation(self, instance):
+        instance.update_status()  # ✅ อัปเดตสถานะก่อนคืนค่า
+        return super().to_representation(instance)
+
+
 
 
 class UpdateBookingStatusSerializer(serializers.ModelSerializer):
@@ -65,6 +89,65 @@ class UpdateBookingStatusSerializer(serializers.ModelSerializer):
         fields = ['status']
 
 class PromotionSerializer(serializers.ModelSerializer):
+    final_price = serializers.SerializerMethodField()
+
     class Meta:
         model = Promotion
-        fields = ['promotion_id', 'name', 'description', 'discount_amount', 'discount_type', 'start_date', 'end_date']
+        fields = [
+            'promotion_id',
+            'name',
+            'description',
+            'discount_amount',
+            'discount_type',
+            'start_date',
+            'end_date',
+            'is_active',
+            'status',
+            'final_price'  # ✅ เพิ่มราคาหลังคำนวณส่วนลด
+        ]
+
+    def get_final_price(self, obj):
+        # สมมติราคาต้นทางคือ 120 (หรือจะรับจาก context ก็ได้)
+        original_price = 120  
+        if obj.discount_type == 'percent':
+            discount = (obj.discount_amount / 100) * original_price
+        else:
+            discount = obj.discount_amount
+
+        final_price = max(original_price - discount, 0)  # ไม่ให้ราคาติดลบ
+        return final_price
+
+class ReviewSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source="user.username", read_only=True)
+
+    class Meta:
+        model = Review
+        fields = ["id", "booking", "user", "username", "review_text", "rating", "created_at"]
+        read_only_fields = ["id", "user", "username", "created_at"]
+
+class NoShowSerializer(serializers.ModelSerializer):
+    username = serializers.CharField(source="user.username", read_only=True)
+
+    class Meta:
+        model = NoShow
+        fields = ["id", "username", "reason", "created_at"]
+
+class HairstyleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Hairstyle
+        fields = ['id', 'name', 'description', 'price',  'image']
+
+    def get_image(self, obj):
+        request = self.context.get('request')
+        if obj.image and request:
+            return request.build_absolute_uri(obj.image.url)
+        return None
+from rest_framework import serializers
+
+class PasswordResetRequestSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+
+class ResetPasswordSerializer(serializers.Serializer):
+    email = serializers.EmailField()
+    token = serializers.CharField(max_length=6)
+    new_password = serializers.CharField(write_only=True)

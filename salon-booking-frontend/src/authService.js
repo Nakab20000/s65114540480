@@ -57,20 +57,16 @@ const resetPassword = (oldPassword, newPassword) => {
 // ✅ ฟังก์ชัน getUserProfile (ต้องส่ง Token)
 const getUserProfile = () => {
     const accessToken = localStorage.getItem("accessToken");
-    return axios.get(API_URL + "user/profile/", {
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
+    return axios.get("http://127.0.0.1:8000/api/user/profile/", {
+        headers: { Authorization: `Bearer ${accessToken}` },
     });
 };
 
 // ✅ ฟังก์ชัน updateUserProfile (ต้องส่ง Token)
 const updateUserProfile = (updatedData) => {
     const accessToken = localStorage.getItem("accessToken");
-    return axios.put(API_URL + "user/profile/", updatedData, {
-        headers: {
-            Authorization: `Bearer ${accessToken}`,
-        },
+    return axios.put("http://127.0.0.1:8000/api/user/profile/", updatedData, {
+        headers: { Authorization: `Bearer ${accessToken}` },
     });
 };
 
@@ -87,12 +83,12 @@ const createPortfolio = (formData) => {
 
 // ✅ ฟังก์ชัน getPortfolios
 const getPortfolios = () => {
-    return axios.get(`${API_URL}portfolio/`);
+    return axios.get(`${API_URL}portfolios/`);
 };
 
 // ✅ ฟังก์ชัน getPortfolio
 const getPortfolio = (id) => {
-    return axios.get(`${API_URL}portfolio/${id}/`);
+    return axios.get(`${API_URL}portfolios/${id}/`);
 };
 
 // ✅ ฟังก์ชัน updatePortfolio (ต้องส่ง Token และใช้ `multipart/form-data`)

@@ -1,0 +1,87 @@
+/* SelectDetailsPage.css */
+.container {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #f9f9f9;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+h1, h2, h3 {
+    color: #333;
+}
+
+.select-time-title12,
+.select-time-title13,
+.select-time-title14 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+}
+
+select, input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.button-like-input1 {
+    display: inline-block;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    color: rgb(203, 27, 27);
+    background-color: #007bff; /* สีฟ้าเหมือนปุ่ม */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-align: center;
+    width: 100%;
+    transition: background 0.3s ease-in-out;
+}
+
+.button-like-input1::placeholder {
+    color: rgba(255, 255, 255, 0.7); /* ให้ placeholder เป็นสีขาวจางๆ */
+}
+
+.button-like-input1:hover {
+    background-color: #0056b3; /* สีเข้มขึ้นเมื่อ hover */
+}
+
+.button-like-input1:focus {
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.7);
+}
+
+.final-price {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e63946;
+    margin-top: 15px;
+}
+
+button {
+    width: 80%;
+    padding: 8px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s ease-in-out;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #0056b3;
+}

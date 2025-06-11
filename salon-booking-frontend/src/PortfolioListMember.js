@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
-import authService from './authService';  // ใช้ authService สำหรับการ login
-import './PortfolioList.css';
-import Header1 from './Header1'; // เปลี่ยนการนำเข้า Header เป็น Header1
+import authService from './authService'; 
+import './PortfolioListMember.css'; // ✅ ใช้ CSS ที่ปรับใหม่
+import Header1 from './Header1';
 
-const PortfolioList = () => {
+const PortfolioListMember = () => {
     const [portfolios, setPortfolios] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        // ฟังก์ชันดึงข้อมูลผลงานจาก API
         const fetchPortfolios = () => {
             authService.getPortfolios()
                 .then(response => {
-                    setPortfolios(response.data);  // เก็บข้อมูลผลงานลงใน state
-                    setLoading(false);  // ปิด loading
+                    setPortfolios(response.data);
+                    setLoading(false);
                 })
                 .catch(error => {
                     console.error("There was an error!", error);
@@ -25,29 +24,33 @@ const PortfolioList = () => {
     }, []);
 
     if (loading) {
-        return <div>Loading...</div>;  // เมื่อข้อมูลยังไม่มา จะโชว์ข้อความ Loading
+        return <div>Loading...</div>;
     }
 
     return (
-        <div className="home-container">
+        <div className="home-container-member">
             <Header1 /> 
-            <h2>Our Portfolio</h2>
-            <div className="portfolio-list">
-                {portfolios.map((portfolio) => (
-                    <div key={portfolio.id} className="portfolio-item">
-                        <h3>{portfolio.title}</h3>
-                        <p>{portfolio.description}</p>
-                        <div className="portfolio-images">
-                            <img src={portfolio.image1} alt={`1 ${portfolio.title}`} />
-                            <img src={portfolio.image2} alt={`2 ${portfolio.title}`} />
-                            <img src={portfolio.image3} alt={`3 ${portfolio.title}`} />
-                            <img src={portfolio.image4} alt={`4 ${portfolio.title}`} />
+            <h2 className="portfolio-title-member">📸 ผลงานของเรา</h2>
+            {portfolios.length === 0 ? (
+                <div className="no-portfolio-member">ยังไม่มีผลงาน</div>
+            ) : (
+                <div className="portfolio-list-member">
+                    {portfolios.map((portfolio) => (
+                        <div key={portfolio.id} className="portfolio-item-member">
+                            <h3 className="portfolio-item-title-member">{portfolio.title}</h3>
+                            <p className="portfolio-item-description-member">{portfolio.description}</p>
+                            <div className="portfolio-images-member">
+                                <img src={portfolio.image1} alt={`1 ${portfolio.title}`} className="portfolio-image-member" />
+                                <img src={portfolio.image2} alt={`2 ${portfolio.title}`} className="portfolio-image-member" />
+                                <img src={portfolio.image3} alt={`3 ${portfolio.title}`} className="portfolio-image-member" />
+                                <img src={portfolio.image4} alt={`4 ${portfolio.title}`} className="portfolio-image-member" />
+                            </div>
                         </div>
-                    </div>
-                ))}
-            </div>
+                    ))}
+                </div>
+            )}
         </div>
     );
 };
 
-export default PortfolioList;
+export default PortfolioListMember;

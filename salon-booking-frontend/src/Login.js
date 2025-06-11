@@ -53,7 +53,7 @@ const Login = () => {
     };
 
     const handleResetPassword = () => {
-        navigate('/reset-password');
+        navigate('/request-reset');
     };
 
     return (

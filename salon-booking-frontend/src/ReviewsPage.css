@@ -1,0 +1,49 @@
+.reviews-page1 {
+    min-height: 100vh;
+    padding: 90px;
+    background: linear-gradient(125deg, #FFF3E0 45%, #FFCC8A 55%);
+}
+
+
+.reviews-container1 {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.reviews-list1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-card1 {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+}
+
+.review-text1 {
+    font-size: 16px;
+    color: #333;
+}
+
+.review-rating1 {
+    color: #ffa726;
+    font-weight: bold;
+}
+
+.review-user1 {
+    color: #555;
+    font-style: italic;
+}
+
+.no-reviews1 {
+    text-align: center;
+    color: #888;
+    font-style: italic;
+}

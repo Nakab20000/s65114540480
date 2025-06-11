@@ -1,0 +1,72 @@
+/* MemberBookingsPage.css */
+.member-page {
+    min-height: 100vh; /* ครอบคลุมเต็มหน้าจอ */
+    padding: 90px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.booking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.booking-table th,
+.booking-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+}
+
+.booking-table th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.cancel-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.cancel-btn:hover {
+    background-color: darkred;
+}
+
+.back-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.back-btn:hover {
+    background-color: #0056b3;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.tabs button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    margin: 0 5px;
+}
+
+.tabs button.active-tab {
+    background-color: #4CAF50;
+    color: white;
+}

@@ -1,0 +1,20 @@
+.calendar-container8 {
+    max-width: 100%;
+    margin: auto;
+    padding: 90px;
+    text-align: center;
+}
+
+.fc8 { 
+    max-width: 100%;
+}
+
+.fc8-daygrid-day {
+    cursor: pointer;
+}
+
+.fc8-daygrid-day.fc8-day-past {
+    background-color: #f8f9fa;
+    opacity: 0.6; /* ✅ ทำให้ดูจางลง */
+    pointer-events: none; /* ✅ ป้องกันการกดวันที่ผ่านมาแล้ว */
+}

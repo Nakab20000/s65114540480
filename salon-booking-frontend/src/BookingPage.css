@@ -1,0 +1,45 @@
+.booking-page7 {
+    min-height: 100vh;
+    padding: 90px;
+    display: flex;
+    flex-direction: column;
+}
+
+.calendar-container7 {
+    flex-grow: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title7 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+}
+
+/* FullCalendar Styling */
+.fc7 {
+    width: 100%;
+    height: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.fc7 .fc-toolbar {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.fc7 .fc-daygrid-day {
+    cursor: pointer;
+}
+
+.fc7 .fc-daygrid-day:hover {
+    background-color: #f0f0f0;
+}
+
+.fc7 .fc-day-today {
+    background-color: #e0f7fa !important;
+}

@@ -21,8 +21,9 @@ const HeaderAdmin = () => {
         <header className="header-admin">
             <div className="header-content">
                 <div className="nav-links">
-                    <a href="/AdminDashboard">สมาชิกไม่มาตามคิว</a> {/* หน้าแดชบอร์ดแอดมิน */}
-                    <a href="/PortfolioListAdmin">โปรโมชั่น</a>  {/* หน้าเพิ่ม/แก้ไขผลงาน */}
+                    <a href="/admin">หน้าแรก</a> {/* หน้าแดชบอร์ดแอดมิน */}
+                    <a href="/admin/no-show-members">สมาชิกไม่มาตามคิว</a> {/* หน้าแดชบอร์ดแอดมิน */}
+                    <a href="/admin/promotions">โปรโมชั่น</a>  {/* หน้าเพิ่ม/แก้ไขผลงาน */}
                 </div>
                 <div className="profile-f" onClick={goToAdminProfile}>
                     <img src="/profile-icon.png" alt="Admin Profile" className="icon" />

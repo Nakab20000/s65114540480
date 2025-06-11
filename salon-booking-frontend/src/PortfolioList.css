@@ -1,35 +1,64 @@
-/* Header.css */
-.portfolio-list-container {
-    max-width: 700px;
-    margin: 0 auto;
-    padding: 20px;
+.home-container6 {
+    min-height: 100vh;
+    padding: 90px;
+    background: linear-gradient(135deg, #FFF3E0 49%, #FFC270 51%);
 }
 
-.portfolio-list {
+.portfolio-title6 {
+    text-align: center;
+    font-size: 28px;
+    color: #5a4a42;
+    margin-bottom: 30px;
+}
+
+.portfolio-list6 {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
 }
 
-.portfolio-item {
-    border: 1px solid #ccc;
-    padding: 15px;
+.portfolio-item6 {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item6:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.portfolio-item-title6 {
+    font-size: 20px;
+    color: #5a4a42;
+    margin-bottom: 12px;
+}
+
+.portfolio-item-description6 {
+    font-size: 14px;
+    color: #7a6a5d;
+    margin-bottom: 16px;
+}
+
+.portfolio-images6 {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.portfolio-image6 {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.portfolio-item h3 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
-}
-
-.portfolio-item p {
-    font-size: 1rem;
-    margin-bottom: 15px;
-}
-
-.portfolio-images img {
-    width: 100%;
-    height: auto;
-    margin-bottom: 10px;
+.no-portfolio6 {
+    text-align: center;
+    color: #ff4d4f;
+    font-weight: bold;
+    font-size: 18px;
 }

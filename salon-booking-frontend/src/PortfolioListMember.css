@@ -1,0 +1,80 @@
+/* 🌟 Container หลัก */
+.home-container-member {
+    min-height: 100vh;
+    padding: 90px;
+    background: linear-gradient(135deg, #FFF3E0 49%, #FFC270 51%);
+}
+
+/* 🌟 หัวข้อหลัก */
+.portfolio-title-member {
+    text-align: center;
+    font-size: 28px;
+    color: #5a4a42;
+    margin-bottom: 30px;
+}
+
+/* 🌟 รายการผลงาน */
+.portfolio-list-member {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 24px;
+}
+
+/* 🌟 กล่องผลงาน */
+.portfolio-item-member {
+    background-color: #fff;
+    padding: 16px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-item-member:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* 🌟 หัวข้อผลงาน */
+.portfolio-item-title-member {
+    font-size: 20px;
+    color: #5a4a42;
+    margin-bottom: 12px;
+}
+
+/* 🌟 คำอธิบายผลงาน */
+.portfolio-item-description-member {
+    font-size: 14px;
+    color: #7a6a5d;
+    margin-bottom: 16px;
+}
+
+/* 🌟 กล่องรูปภาพ */
+.portfolio-images-member {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* 🌟 รูปภาพผลงาน */
+.portfolio-image-member {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid #ddd;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.portfolio-image-member:hover {
+    transform: scale(1.05);
+    border-color: #FFB74D;
+}
+
+/* 🌟 ข้อความกรณีไม่มีผลงาน */
+.no-portfolio-member {
+    text-align: center;
+    color: #ff4d4f;
+    font-weight: bold;
+    font-size: 18px;
+}

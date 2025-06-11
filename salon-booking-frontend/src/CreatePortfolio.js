@@ -1,18 +1,13 @@
 import React, { useState } from 'react';
-import authService from './authService';  // ใช้ authService สำหรับการ login
 import { useNavigate } from 'react-router-dom';
-import './CreatePortfolio.css';
+import './CreatePortfolioPage.css';
 
-const CreatePortfolio = () => {
+const CreatePortfolioPage = () => {
+    const navigate = useNavigate();
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
-    const [images, setImages] = useState({
-        image1: null,
-        image2: null,
-        image3: null,
-        image4: null
-    });
-    const navigate = useNavigate();
+    const [images, setImages] = useState({ image1: null, image2: null, image3: null, image4: null });
+    const [errorMessage, setErrorMessage] = useState(null);
 
     const handleImageChange = (e, imageNumber) => {
         setImages({ ...images, [imageNumber]: e.target.files[0] });
@@ -20,29 +15,44 @@ const CreatePortfolio = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+
         const formData = new FormData();
         formData.append('title', title);
         formData.append('description', description);
-        formData.append('image1', images.image1);
-        formData.append('image2', images.image2);
-        formData.append('image3', images.image3);
-        formData.append('image4', images.image4);
+
+        if (images.image1) formData.append('image1', images.image1);
+        if (images.image2) formData.append('image2', images.image2);
+        if (images.image3) formData.append('image3', images.image3);
+        if (images.image4) formData.append('image4', images.image4);
 
         const accessToken = localStorage.getItem('accessToken');
-        authService.createPortfolio(formData, accessToken)
-            .then(response => {
-                alert('Portfolio created successfully!');
-                navigate('/admin');  // พากลับไปที่หน้า admin
+
+        fetch('http://127.0.0.1:8000/api/portfolio/create/', {
+            method: 'POST',
+            headers: {
+                'Authorization': `Bearer ${accessToken}`,
+            },
+            body: formData,
+        })
+            .then(response => response.json())
+            .then(data => {
+                if (data.id) {
+                    alert('Portfolio created successfully!');
+                    navigate('/admin');
+                } else {
+                    setErrorMessage('Failed to create portfolio. Please try again.');
+                }
             })
             .catch(error => {
-                console.error("There was an error!", error);
-                alert('Failed to create portfolio.');
+                console.error('Error:', error);
+                setErrorMessage('Failed to create portfolio. Please try again.');
             });
     };
 
     return (
-        <div className="create-portfolio-container">
+        <div className="create-portfolio-page">
             <h2>Create Portfolio</h2>
+            {errorMessage && <p className="error-message">{errorMessage}</p>}
             <form onSubmit={handleSubmit}>
                 <div className="form-group">
                     <input
@@ -60,9 +70,19 @@ const CreatePortfolio = () => {
                     />
                 </div>
                 <div className="form-group">
+                    <label>Image 1:</label>
                     <input type="file" onChange={(e) => handleImageChange(e, 'image1')} />
+                </div>
+                <div className="form-group">
+                    <label>Image 2:</label>
                     <input type="file" onChange={(e) => handleImageChange(e, 'image2')} />
+                </div>
+                <div className="form-group">
+                    <label>Image 3:</label>
                     <input type="file" onChange={(e) => handleImageChange(e, 'image3')} />
+                </div>
+                <div className="form-group">
+                    <label>Image 4:</label>
                     <input type="file" onChange={(e) => handleImageChange(e, 'image4')} />
                 </div>
                 <button type="submit">Submit Portfolio</button>
@@ -71,4 +91,4 @@ const CreatePortfolio = () => {
     );
 };
 
-export default CreatePortfolio;
+export default CreatePortfolioPage;

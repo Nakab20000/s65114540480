@@ -18,10 +18,11 @@ import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880  # 5MB
 
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -49,6 +50,8 @@ INSTALLED_APPS = [
     "corsheaders",
     'salon_booking',
     'rest_framework_simplejwt.token_blacklist',
+    'rest_framework',
+    'rest_framework_simplejwt',
 ]
 
 MIDDLEWARE = [
@@ -149,8 +152,18 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',  # ✅ ต้องล็อกอินก่อนใช้งาน API
+    ],
 }
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",  # ปรับ URL ให้ตรงกับ frontend ของคุณ
 ]
+
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"  # ✅ ใช้ Gmail SMTP
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "konsue4224@gmail.com"
+EMAIL_HOST_PASSWORD = "ihlz uskw smod nqhf"

@@ -1,0 +1,127 @@
+/* โครงสร้างหลัก */
+.select-time-container10 {
+    padding: 20px;
+    font-family: "Arial", sans-serif;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  
+  .select-time-title10 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 5px;
+  }
+  
+  .select-time-subtitle10 {
+    font-size: 18px;
+    margin-top: 10px;
+    color: #666;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .time-grid10 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  /* ปรับปุ่มเวลาให้ยาวมากขึ้นเพื่อรองรับข้อความเวลา */
+  .time-button10 {
+    height: 45px;
+    width: 140px; /* ปรับให้กว้างมากขึ้น */
+    border-radius: 22px; /* ครึ่งหนึ่งของความสูง */
+    border: 1px solid #ddd;
+    background-color: #f0f0f0;
+    color: #555;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin: 0 auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px; /* ปรับขนาดตัวอักษรให้เหมาะสม */
+  }
+  
+  .time-button10:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  }
+  
+  .time-button10.selected10 {
+    background-color: #4caf50;
+    color: white;
+    border: 2px solid #2e8b57;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+  }
+  
+  .time-button10.closed10,
+  .time-button10.booked10 {
+    background-color: #ff5252;
+    color: white;
+    cursor: not-allowed;
+    opacity: 0.9;
+    border: 2px solid #d32f2f;
+  }
+  
+  .time-button10.past10 {
+    background-color: #9e9e9e;
+    color: #f5f5f5;
+    cursor: not-allowed;
+    border: 2px solid #757575;
+    opacity: 0.7;
+  }
+  
+  .action-buttons10 {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .back-button10,
+  .next-button10 {
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    min-width: 120px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .back-button10 {
+    background-color: #f44336;
+  }
+  
+  .back-button10:hover {
+    background-color: #d32f2f;
+    transform: translateY(-2px);
+  }
+  
+  .next-button10 {
+    background-color: #4caf50;
+  }
+  
+  .next-button10:hover {
+    background-color: #388e3c;
+    transform: translateY(-2px);
+  }
+  
+  .next-button10.disabled10 {
+    background-color: #bdbdbd;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+  }
