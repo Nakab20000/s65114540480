@@ -26,3 +26,36 @@ npm start #สั่งใช้งาน frontend
 
 python manage.py createsuperuser #สร้างอีเมลล์และรหัสแอดมิน
 แนะนำ ใช้terminal 2ตัว เพื่อให้สับสนน้อย ตัวที่1 รันfrontend # cd frontend ตัวที่2 รันbackend # cd backend
+
+เชื่อมdata
+db:
+  image: postgres:15
+  environment:
+    POSTGRES_DB: ${POSTGRES_DB}
+    POSTGRES_USER: ${POSTGRES_USER}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+  ports:
+    - "5432:5432"
+  volumes:
+    - pg_data:/var/lib/postgresql/data
+
+db:
+  image: mongo:7
+  environment:
+    MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+    MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+  ports:
+    - "27017:27017"
+  volumes:
+    - mongo_data:/data/db
+
+  db:
+    image: mariadb:11
+    container_name: salon_maria_db
+    environment:
+      MARIADB_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      MARIADB_DATABASE: ${MARIADB_DATABASE}
+    ports:
+      - "3307:3306"
+    volumes:
+      - db_data:/var/lib/mysql
