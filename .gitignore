@@ -23,7 +23,6 @@ yarn-error.log*
 /dist/
 
 # Environment variables
-.env
 
 # Tailwind and other temporary files
 *.cache
