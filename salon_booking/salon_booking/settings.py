@@ -30,9 +30,10 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 SECRET_KEY = "django-insecure-8&f%0hzz4#n1m@o9e28urbunt(^4igxm8--oxrp!u_6ps^23hd"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["202.28.49.122", "localhost"]
+
 
 DATA_UPLOAD_MAX_MEMORY_SIZE = 5242880
 
@@ -97,15 +98,14 @@ WSGI_APPLICATION = "salon_booking.wsgi.application"
 #}
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'salon_booking_db',
-        'USER': 'root',
-        'PASSWORD': '1234',
-        'HOST': 'db',
-        'PORT': '3306',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.getenv("DATABASE_NAME", "salon_booking_db"),
+        'USER': os.getenv("DATABASE_USER", "salon_user"),
+        'PASSWORD': os.getenv("DATABASE_PASSWORD", "1234"),
+        'HOST': os.getenv("DATABASE_HOST", "db"),
+        'PORT': "5432",
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
