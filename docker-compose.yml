@@ -1,3 +1,4 @@
+
 services:
   db:
     image: postgres:15
@@ -31,7 +32,7 @@ services:
         echo 'Database is up!' &&
         python manage.py makemigrations &&
         python manage.py migrate &&
-        python manage.py shell -c 'from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username=\"salon_user\").exists() or User.objects.create_superuser(\"salon_user\", \"admin@example.com\", \"1234\")' &&
+        python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='salon_user').exists() or User.objects.create_user(email='user@example.com', username='salon_user', password='1234'); User.objects.filter(username='admin_user').exists() or User.objects.create_superuser(email='admin@example.com', username='admin_user', password='1234')\" &&
         gunicorn salon_booking.wsgi:application --bind 0.0.0.0:8000 --workers 3
       "
 
