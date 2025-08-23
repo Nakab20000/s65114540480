@@ -8,7 +8,7 @@ services:
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
     ports:
-      - "5432:5432"
+      - "20480:5432"   # PostgreSQL = 2XXXX
     volumes:
       - db_data:/var/lib/postgresql/data
 
@@ -17,7 +17,7 @@ services:
     volumes:
       - ./salon_booking:/app
     ports:
-      - "8000:8000"
+       - "10480:8000"   # Backend/เว็บหลัก = 1XXXX
     environment:
       DATABASE_HOST: db
       DATABASE_NAME: ${POSTGRES_DB}
@@ -39,7 +39,7 @@ services:
   frontend:
     build: ./salon-booking-frontend
     ports:
-      - "3000:3000"
+      - "30480:3000"   # frontend dev server = 3XXXX
     depends_on:
       - backend
 
