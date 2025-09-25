@@ -1,3 +1,4 @@
+version: "3.9"
 
 services:
   db:
@@ -7,17 +8,16 @@ services:
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-    ports:
-      - "20480:5432"   # PostgreSQL = 2XXXX
     volumes:
       - db_data:/var/lib/postgresql/data
+    networks:
+      - internal
 
   backend:
-    build: ./salon_booking
+    build:
+      context: ./salon_booking
     volumes:
       - ./salon_booking:/app
-    ports:
-       - "10480:8000"   # Backend/เว็บหลัก = 1XXXX
     environment:
       DATABASE_HOST: db
       DATABASE_NAME: ${POSTGRES_DB}
@@ -27,21 +27,44 @@ services:
       - db
     command: >
       sh -c "
-        echo 'Waiting for database...' &&
         while ! nc -z db 5432; do sleep 1; done &&
-        echo 'Database is up!' &&
-        python manage.py makemigrations &&
         python manage.py migrate &&
-        python manage.py shell -c \"from django.contrib.auth import get_user_model; User = get_user_model(); User.objects.filter(username='salon_user').exists() or User.objects.create_user(email='user@example.com', username='salon_user', password='1234'); User.objects.filter(username='admin_user').exists() or User.objects.create_superuser(email='admin@example.com', username='admin_user', password='1234')\" &&
         gunicorn salon_booking.wsgi:application --bind 0.0.0.0:8000 --workers 3
       "
+    labels:
+      - "traefik.enable=true"
+      - 'traefik.http.routers.backend.rule=PathPrefix(`/s65114540480/api`)'
+      - "traefik.http.routers.backend.entrypoints=web"
+      - 'traefik.http.middlewares.backend-stripprefix.stripprefix.prefixes=/s65114540480/api'
+      - "traefik.http.routers.backend.middlewares=backend-stripprefix"
+      - "traefik.http.services.backend.loadbalancer.server.port=8000"
+    networks:
+      - internal
+      - traefik-public
 
   frontend:
-    build: ./salon-booking-frontend
-    ports:
-      - "30480:3000"   # frontend dev server = 3XXXX
+    build:
+      context: ./salon-booking-frontend
+      args: 
+        PUBLIC_URL: /s65114540480
     depends_on:
       - backend
+    labels:
+      - "traefik.enable=true"
+      - 'traefik.http.routers.frontend.rule=PathPrefix(`/s65114540480`)'
+      - "traefik.http.routers.frontend.entrypoints=web"
+      - 'traefik.http.middlewares.frontend-stripprefix.stripprefix.prefixes=/s65114540480'
+      - "traefik.http.routers.frontend.middlewares=frontend-stripprefix"
+      - "traefik.http.services.frontend.loadbalancer.server.port=80"
+    networks:
+      - internal
+      - traefik-public
 
 volumes:
   db_data:
+
+networks:
+  internal:
+    driver: bridge
+  traefik-public:
+    external: true

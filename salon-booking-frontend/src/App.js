@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Register from './Register';
 import Login from './Login';
 import Logout from './Logout';
@@ -45,7 +45,7 @@ import VerifyResetCode from './VerifyResetCode';
 
 function App() {
     return (
-        <Router>
+        <Router basename="/s65114540480">
             <Routes>
                 {/* 🌐 Public Routes */}
                 <Route path="/" element={<Home />} />
